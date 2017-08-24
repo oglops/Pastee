@@ -42,14 +42,17 @@ def pastee(desc, txt, filename):
     API_KEY = ''
 
     filename = filename.split(os.path.sep)[-1]
-    post_param = {'description': desc, 'sections':[{'name': filename, 
-                  'contents': txt }]}  # Parameters to pass to the Pastee API 
+    post_param = {'key': API_KEY,
+                 'description': desc, 
+                 'sections':[{'name': filename, 
+                 'contents': txt }]}  # Parameters to pass to the Pastee API 
     r = None
 
     try:
         # Post the params to Pastee API and get the url
         r = requests.post('https://api.paste.ee/v1/pastes',
-                          json=post_param, verify=certifi.where())
+                          json=post_param, 
+                          verify=certifi.where())
     except requests.ConnectionError as e:
         print 'Connection Error'
 
@@ -66,7 +69,10 @@ def pastee(desc, txt, filename):
             print error[r.content]  # if any error return error
         else:
             print(r.content)  # print pastee url to the cmd or python command line
-            addToClipBoard(r.content)  # add pastee url to clipboard
+            try:
+                addToClipBoard(r.content)  # add pastee url to clipboard
+            except:
+                pass
 
     return 0
 
