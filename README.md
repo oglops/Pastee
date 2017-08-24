@@ -20,4 +20,5 @@ Note: this has to done from windows command line:
 ####Requirements:
 1. [Python 2.7.0](https://www.python.org/download/releases/2.7/)
 2. [Requests(version:2.3.0)](http://python-requests.org)
-3. [API_KEY](https://paste.ee/)
+3. [certifi](https://pypi.python.org/pypi/certifi)
+4. [API_KEY](https://paste.ee/)
